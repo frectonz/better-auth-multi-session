@@ -16,6 +16,17 @@
 
   const currentSession = authClient.useSession();
   const sessions = useFetcher(() => authClient.multiSession.listDeviceSessions());
+
+  async function setActiveSession(sessionToken: string) {
+    try {
+      await authClient.multiSession.setActive({
+        sessionToken
+      });
+      alert('Active session updated.');
+    } catch (err) {
+      console.log('Failed to set active session', err);
+    }
+  }
 </script>
 
 <svelte:head>
@@ -73,6 +84,7 @@
             <pre class="json-block">{JSON.stringify(session.user, null, 2)}</pre>
           </div>
         </div>
+        <button onclick={() => setActiveSession(session.session.token)}>Set as Active</button>
       </div>
     {/each}
   </div>
