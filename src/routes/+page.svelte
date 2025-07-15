@@ -14,17 +14,41 @@
     });
   }
 
+  const currentSession = authClient.useSession();
   const sessions = useFetcher(() => authClient.multiSession.listDeviceSessions());
 </script>
 
 <svelte:head>
-	<title>Multi Session</title>
+  <title>Multi Session</title>
 </svelte:head>
 
 <h1>Sign In</h1>
 
 <button onclick={linkedinSignIn}> Sign In with LinkedIn </button>
 <button onclick={githubSignIn}> Sign In with GitHub </button>
+
+<hr />
+
+<h1>Current Session</h1>
+
+<div>
+  {#if $currentSession.data}
+    <div class="session-container">
+      <div class="session-flex">
+        <div class="session-column">
+          <h3>Session</h3>
+          <pre class="json-block">{JSON.stringify($currentSession.data.session, null, 2)}</pre>
+        </div>
+        <div class="session-column">
+          <h3>User</h3>
+          <pre class="json-block">{JSON.stringify($currentSession.data.user, null, 2)}</pre>
+        </div>
+      </div>
+    </div>
+  {:else}
+    <p>No current session</p>
+  {/if}
+</div>
 
 <hr />
 
