@@ -17,6 +17,10 @@
   const sessions = useFetcher(() => authClient.multiSession.listDeviceSessions());
 </script>
 
+<svelte:head>
+	<title>Multi Session</title>
+</svelte:head>
+
 <h1>Sign In</h1>
 
 <button onclick={linkedinSignIn}> Sign In with LinkedIn </button>
