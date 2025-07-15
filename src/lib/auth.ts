@@ -14,6 +14,10 @@ export const auth = betterAuth({
     linkedin: {
       clientId: env.LINKEDIN_CLIENT_ID,
       clientSecret: env.LINKEDIN_CLIENT_SECRET
+    },
+    github: {
+      clientId: env.GITHUB_CLIENT_ID,
+      clientSecret: env.GITHUB_CLIENT_SECRET
     }
   },
   plugins: [multiSession()]
