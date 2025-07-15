@@ -40,6 +40,16 @@
 
 <hr />
 
+<form method="POST" action="?/activeSession">
+  <label>
+    Session Token
+    <input name="token" type="text" />
+  </label>
+  <button>Set Session</button>
+</form>
+
+<hr />
+
 <h1>Current Session</h1>
 
 <div>
